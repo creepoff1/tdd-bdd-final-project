@@ -10,6 +10,7 @@ jobs:
     - name: Install dependencies
       run: |
         bash bin/setup.sh
+        exit
         source venv/bin/activate
     - name: Analysing the code with pylint
       run: |
