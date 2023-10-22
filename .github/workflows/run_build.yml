@@ -17,6 +17,7 @@ jobs:
     - name: Install dependencies
       run: |
         bash bin/setup.sh
+        exit
         pip install -r requirements.txt
     - name: Analysing the code with pylint
       run: |
