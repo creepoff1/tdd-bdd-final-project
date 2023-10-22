@@ -31,4 +31,4 @@ jobs:
         sleep 10
     - name: Run bdd tests
       run: |
-        behave
+        behave --format pretty
