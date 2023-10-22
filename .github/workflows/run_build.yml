@@ -10,7 +10,7 @@ jobs:
     - name: Install dependencies
       run: |    
         chmod +x bin/setup.sh
-        ./setup.sh
+        bin/setup.sh
       shell: bash
     - name: Analysing the code with pylint
       run: |
