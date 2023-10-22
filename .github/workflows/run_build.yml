@@ -18,21 +18,18 @@ jobs:
       run: |
         bash bin/setup.sh
         pip install -r requirements.txt
+    - name: Analysing the code with pylint
+      run: |
+        pylint $(git ls-files '*.py')
+        exit 0
     - name: Run unit tests
       run: |
         nosetests --with-coverage
     - name: Run Flask app
       run: |
         export FLASK_APP=service/__init__.py
-        flask run --host=0.0.0.0
-  additional_task:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
+        flask run --host=0.0.0.0 &
+        sleep 10
     - name: Run bdd tests
       run: |
         behave
-    - name: Analysing the code with pylint
-      run: |
-        pylint $(git ls-files '*.py')
-        exit 0
