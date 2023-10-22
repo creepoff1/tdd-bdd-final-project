@@ -18,7 +18,9 @@ jobs:
       run: |
         bash bin/setup.sh
         pip install -r requirements.txt
+    - name: Run unit tests
+      run: |
+        nosetests --with-coverage
     - name: Analysing the code with pylint and run unit tests
       run: |
         pylint $(git ls-files '*.py')
-        nosetests
