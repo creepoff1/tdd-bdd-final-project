@@ -21,6 +21,9 @@ jobs:
     - name: Run unit tests
       run: |
         nosetests --with-coverage
+    - name: Run bdd tests
+      run: |
+        behave
     - name: Analysing the code with pylint and run unit tests
       run: |
         pylint $(git ls-files '*.py')
