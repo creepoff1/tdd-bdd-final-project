@@ -25,6 +25,10 @@ jobs:
       run: |
         export FLASK_APP=service/__init__.py
         flask run --host=0.0.0.0
+  additional_task:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
     - name: Run bdd tests
       run: |
         behave
