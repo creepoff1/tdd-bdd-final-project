@@ -7,14 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: 3.9 
     - name: Install dependencies
-      run: |
-        bash bin/setup.sh
-        pip install -r requirements.txt
+      run: |    
+        chmod +x bin/setup.sh
+        ./setup.sh
+      shell: bash
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py') || true
