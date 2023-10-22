@@ -1,4 +1,4 @@
-name: Pylint
+name: Build Project
 
 on: [push]
 
@@ -18,9 +18,7 @@ jobs:
       run: |
         bash bin/setup.sh
         pip install -r requirements.txt
-    - name: Analysing the code with pylint
+    - name: Analysing the code with pylint and run unit tests
       run: |
         pylint $(git ls-files '*.py')
-    - name: Run unit tests
-      run: |
         nosetests
