@@ -21,6 +21,10 @@ jobs:
     - name: Run unit tests
       run: |
         nosetests --with-coverage
+    - name: Run Flask app
+      run: |
+        export FLASK_APP=service/__init__.py
+        flask run --host=0.0.0.0
     - name: Run bdd tests
       run: |
         behave
