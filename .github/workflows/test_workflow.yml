@@ -54,8 +54,7 @@ jobs:
         python3 -m pylint $(git ls-files '*.py') || true
     - name: Run unit tests
       run: |
-        source ~/venv/bin/activate
-        python3 -m nosetests --with-coverage
+        nosetests --with-coverage
     - name: Run Flask app
       run: |
         export FLASK_APP=service/__init__.py
@@ -63,5 +62,4 @@ jobs:
         sleep 10
     - name: Run bdd tests
       run: |
-        source ~/venv/bin/activate
         python3 -m behave
