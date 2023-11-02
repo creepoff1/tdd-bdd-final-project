@@ -1,3 +1,5 @@
+![Build Status](https://github.com/creepoff1/tdd-bdd-final-project/actions/workflows/build_project.yml/badge.svg)
+
 # TDD / BDD Final Project Template
 
 This repository contains the template to be used for the Final Project for the Coursera course **Introduction to TDD/BDD**.
