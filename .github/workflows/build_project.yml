@@ -36,7 +36,7 @@ jobs:
 
     - name: Activate virtualenv
       run: |
-        . .venv/bin/activate
+        . ~/venv/bin/activate
         echo PATH=$PATH >> $GITHUB_ENV     
 
     - name: Analysing the code with pylint
