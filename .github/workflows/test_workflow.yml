@@ -12,11 +12,23 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v3
-      with:
-        python-version: 3.9
 
-    - name: Set up Enviroment
+    - name: Set up Python 3.9
       run: |
+        echo "**************************************************"
+        echo " Setting up TDD/BDD Final Project Environment"
+        echo "**************************************************"
+
+        echo "*** Installing Python 3.9 and Virtual Environment"
+        sudo apt-get update
+        sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3.9
+
+        echo "*** Checking the Python version..."
+        python3 --version
+
+        echo "*** Creating a Python virtual environment"
+        python3 -m venv ~/venv
+
         echo "*** Configuring the developer environment..."
         echo "# TDD/BDD Final Project additions" >> ~/.bashrc
         echo "export GITHUB_ACCOUNT=creepoff1" >> ~/.bashrc
@@ -47,10 +59,10 @@ jobs:
         echo ""
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py') || true
+        python -m pylint $(git ls-files '*.py') || true
     - name: Run unit tests
       run: |
-        nosetests --with-coverage
+        python -m nosetests --with-coverage
     - name: Run Flask app
       run: |
         export FLASK_APP=service/__init__.py
@@ -58,4 +70,4 @@ jobs:
         sleep 10
     - name: Run bdd tests
       run: |
-        behave
+        python -m behave
