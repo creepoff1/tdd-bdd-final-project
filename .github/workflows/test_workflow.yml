@@ -59,10 +59,10 @@ jobs:
         echo ""
     - name: Analysing the code with pylint
       run: |
-        python -m pylint $(git ls-files '*.py') || true
+        python3 -m pylint $(git ls-files '*.py') || true
     - name: Run unit tests
       run: |
-        python -m nosetests --with-coverage
+        python3 -m nosetests --with-coverage
     - name: Run Flask app
       run: |
         export FLASK_APP=service/__init__.py
@@ -70,4 +70,4 @@ jobs:
         sleep 10
     - name: Run bdd tests
       run: |
-        python -m behave
+        python3 -m behave
