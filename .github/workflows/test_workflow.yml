@@ -12,23 +12,11 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v3
+      with:
+        python-version: 3.9
 
-    - name: Set up Python 3.9
+    - name: Set up Enviroment
       run: |
-        echo "**************************************************"
-        echo " Setting up TDD/BDD Final Project Environment"
-        echo "**************************************************"
-
-        echo "*** Installing Python 3.9 and Virtual Environment"
-        sudo apt-get update
-        sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3.9
-
-        echo "*** Checking the Python version..."
-        python3 --version
-
-        echo "*** Creating a Python virtual environment"
-        python3 -m venv ~/venv
-
         echo "*** Configuring the developer environment..."
         echo "# TDD/BDD Final Project additions" >> ~/.bashrc
         echo "export GITHUB_ACCOUNT=creepoff1" >> ~/.bashrc
