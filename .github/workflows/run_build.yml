@@ -12,11 +12,10 @@ jobs:
     container: python:3.9-slim
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip wheel
-          pip install -r requirements.txt
+          bash bin/setup.sh 
       - name: Lint with pylint
         run: |
           pylint $(git ls-files '*.py') || true
