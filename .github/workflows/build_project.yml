@@ -3,7 +3,7 @@ name: Build Project
 on: [push]
 
 jobs:
-  build:
+  build_project:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -34,28 +34,25 @@ jobs:
         postgres:alpine
         docker ps
 
+    - name: Activate virtualenv
+      run: |
+        . .venv/bin/activate
+        echo PATH=$PATH >> $GITHUB_ENV     
+
     - name: Analysing the code with pylint
       run: |
-        source ~/venv/bin/activate
         python3 -m pylint $(git ls-files '*.py') || true
-        deactivate
         
     - name: Run unit tests
       run: |
-        source ~/venv/bin/activate
         nosetests --with-coverage
-        deactivate
         
     - name: Run Flask app
       run: |
-        source ~/venv/bin/activate
         export FLASK_APP=service/__init__.py
         flask run --host=0.0.0.0 &
         sleep 5
-        deactivate
         
     - name: Run bdd tests
       run: |
-        source ~/venv/bin/activate
         python3 -m behave
-        deactivate
