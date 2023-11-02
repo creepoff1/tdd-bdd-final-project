@@ -48,14 +48,13 @@ jobs:
 
         echo "**************************************************"
         echo " TDD/BDD Final Project Environment Setup Complete"
-        echo ""
-        echo "Use 'exit' to close this terminal and open a new one to initialize the environment"
-        echo ""
     - name: Analysing the code with pylint
       run: |
+        source ~/venv/bin/activate
         python3 -m pylint $(git ls-files '*.py') || true
     - name: Run unit tests
       run: |
+        source ~/venv/bin/activate
         python3 -m nosetests --with-coverage
     - name: Run Flask app
       run: |
@@ -64,4 +63,5 @@ jobs:
         sleep 10
     - name: Run bdd tests
       run: |
+        source ~/venv/bin/activate
         python3 -m behave
