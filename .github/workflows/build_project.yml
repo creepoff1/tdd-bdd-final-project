@@ -28,17 +28,15 @@ jobs:
         source ~/venv/bin/activate && python3 -m pip install --upgrade pip wheel
         source ~/venv/bin/activate && pip install -r requirements.txt
 
-        echo "*** Establishing .env file"
-        cp dot-env-example .env
-
-        echo "*** Starting the Postgres Docker container..."
-        make db
-
-        echo "*** Checking the Postgres Docker container..."
+    - name: Start PostgreSQL container
+      run: |
+        docker run -d --name postgres \
+        -p 5432:5432 \
+        -e POSTGRES_PASSWORD=postgres \
+        -v postgres:/var/lib/postgresql/data \
+        postgres:alpine
         docker ps
 
-        echo "**************************************************"
-        echo " TDD/BDD Final Project Environment Setup Complete"
     - name: Analysing the code with pylint
       run: |
         source ~/venv/bin/activate
