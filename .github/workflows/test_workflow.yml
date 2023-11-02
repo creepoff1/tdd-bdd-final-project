@@ -7,7 +7,7 @@ on:
 
 jobs:
   setup-environment:
-    runs-on: ubuntu-latest
+    runs-on: debian-latest
 
     steps:
     - name: Check out code
