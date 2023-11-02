@@ -1,28 +1,19 @@
 name: Setup TDD/BDD Final Project Environment
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
-  setup-environment:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Check out code
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.9 
 
-    - name: Set up Python 3.9
+    - name: Set up enviroment
       run: |
-        echo "**************************************************"
-        echo " Setting up TDD/BDD Final Project Environment"
-        echo "**************************************************"
-
-        echo "*** Installing Python 3.9 and Virtual Environment"
-        sudo apt-get update
-        sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3.9
-
         echo "*** Checking the Python version..."
         python3 --version
 
