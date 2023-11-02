@@ -28,15 +28,6 @@ jobs:
         source ~/venv/bin/activate && python3 -m pip install --upgrade pip wheel
         source ~/venv/bin/activate && pip install -r requirements.txt
 
-    - name: Start PostgreSQL container
-      run: |
-        docker run -d --name postgres \
-        -p 5432:5432 \
-        -e POSTGRES_PASSWORD=postgres \
-        -v postgres:/var/lib/postgresql/data \
-        postgres:alpine
-        docker ps
-
     - name: Analysing the code with pylint
       run: |
         source ~/venv/bin/activate
@@ -52,7 +43,7 @@ jobs:
         source ~/venv/bin/activate
         export FLASK_APP=service/__init__.py
         flask run --host=0.0.0.0 &
-        sleep 10
+        sleep 5
         deactivate
     - name: Run bdd tests
       run: |
