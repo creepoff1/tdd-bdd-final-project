@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python3.9-slim' // Указываем образ Python 3
+        }
+    }
 
     stages {
         stage('Checkout') {
