@@ -1,10 +1,4 @@
 pipeline {
-    agent {
-        docker {
-            image 'python3.9-slim' // Указываем образ Python 3
-        }
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -14,7 +8,7 @@ pipeline {
 
         stage('Set up Python') {
             steps {
-                script {
+                 docker.image('python3.9-slim').withRun {
                     sh 'echo "*** Checking the Python version..."'
                     sh 'python3 --version'
                 }
