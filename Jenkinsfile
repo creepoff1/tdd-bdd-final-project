@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'fundingsocietiesdocker/python3.9-slim' // Указываем образ Python 3
+            image 'python3.9-slim' // Указываем образ Python 3
         }
     }
 
