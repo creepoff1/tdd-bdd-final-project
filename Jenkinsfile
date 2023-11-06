@@ -9,7 +9,7 @@ pipeline {
 
         stage('Set up Python') {
             steps {
-                 docker.image('python3.9-slim').withRun {
+                    docker.image('python3.9-slim').withRun {
                     sh 'echo "*** Checking the Python version..."'
                     sh 'python3 --version'
                 }
