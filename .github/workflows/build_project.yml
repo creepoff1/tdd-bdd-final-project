@@ -22,7 +22,7 @@ jobs:
         -d '{
               "name": "Test Plan for Build ${GITHUB_SHA}",
               "description": "Automated test plan created by GitHub Actions for build ${GITHUB_SHA}",
-              "projectId": "WEB_APP"
+              "projectId": "1"
             }'
 
 
