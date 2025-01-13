@@ -14,15 +14,20 @@ jobs:
         
     - name: Create Test Plan in Testiny
       env:
-        TESTINY_API_KEY: tny_felpITCTpfulA2YFIPfRA9WbRocoOpp0cb47pZu9jFWEVWYh
+        TESTINY_API_KEY: secrets.TESTINY_API_KEY
       run: |
         curl -X POST https://app.testiny.io/api/v1/testplan \
         -H "Authorization: Bearer $TESTINY_API_KEY" \
         -H "Content-Type: application/json" \
-        -d '{
-              "name": "Test Plan for Build ${GITHUB_SHA}",
-              "description": "Automated test plan created by GitHub Actions for build ${GITHUB_SHA}",
-              "projectId": 1
+        -d -d '{
+              "title": "SMOKE",
+              "is_deleted": false,
+              "deleted_by": 0,
+              "project_id": 1,
+              "testplan_id": 0,
+              "closed_by": 0,
+              "is_closed": false,
+              "description": ""
             }'
 
 
